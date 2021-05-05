@@ -5,7 +5,6 @@ import csv
 from unique_id import unique_id
 from print_tabel import print_tabel
 
-
 full_path = os.path.realpath(__file__)
 file_directory = os.path.dirname(full_path)
 directory_path = os.path.join(file_directory, "initial_files")
@@ -14,6 +13,7 @@ expire_file = os.path.join(directory_path, "expires_dates.csv")
 purchase_file = os.path.join(directory_path, "purchase.csv")
 
 def purchase_input():
+    # process to embed purchase information into the inventory
     flag = "n"
     while flag != "y":
         product_name = input("Product_name: (text) ")
