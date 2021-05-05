@@ -18,32 +18,14 @@ purchase_file = os.path.join(directory_path, "purchase.csv")
 sales_file = os.path.join(directory_path, "sales.csv")
 
 ap = argparse.ArgumentParser()
-# id = "202104094202155202145"            # testline
-# sold_date = "2021-04-03"                # testline
-# sold_price = str(23.23)                 # testline
+# id = "246810"                                      # testline
+# sold_date = "2021-04-03"                                          # testline
+# sold_price = str(23.23)                                           # testline
 
-"""
-Dit deel is niet meer nodig als ik vanuit main.py kom
-
-ap.add_argument("-id", required=True,
-                help="id; identity number of item of inventory")
-ap.add_argument("-sd", required=False,
-                help="sd; date (yyyy-mm-dd) when item was sold. Default: today.")
-ap.add_argument("-sp", required=True,
-                help="sp; price at which item was sold")
-args = vars(ap.parse_args()) # change commandline arguments in dictionary. Key: argument name, value: content
-id = args["id"]
-print(f"\n\nThe given ID: \t\t\t{id}")
-
-if args["sd"] == None:
-    sold_date = str(date.today())
-else:
-    sold_date = args["sd"]
-"""
 def sell2(id, sold_date, sold_price):
+    # process to embed sold item information into the inventory and associated files
     if sold_date == "None":
         sold_date = str(date.today())
-    # _ = system('cls')  # clear screen
     print("\n Action: sell item\n")
     print(f" The indicated item-ID: \t{id}")
     print(f" The indicated sold date: \t{sold_date}")
@@ -103,9 +85,5 @@ def sell2(id, sold_date, sold_price):
         print_tabel(sales_file)
     else:
         print(f"\nTransaction aborted, because item-ID {id} was already sold/expired/non-existing (see inventory report).", file=sys.stdout)
-    # total_sales = round(total_sales, 2)
-    # print(f"\nTotal sales: \t\t\t{total_sales}", file=sys.stdout)
-    # print("\n Sales overview:")
-    # print_tabel(sales_file)
     return
 
