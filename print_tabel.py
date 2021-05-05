@@ -9,9 +9,11 @@ inventory_file = os.path.join(directory_path, "inventory.csv")
 expire_file = os.path.join(directory_path, "expires_dates.csv")
 
 def pad_col(col, max_width):
+    # determine the maximum column width
     return col.ljust(max_width)
 
 def print_tabel(print_file):
+    # display the offered print_file in a table format
     print()
     with open(print_file) as csvfile:
         reader = csv.reader(csvfile)
