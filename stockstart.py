@@ -17,10 +17,11 @@ from unique_id import unique_id
 
 class StockStart():
     def __init__(self):
-        dir_path = create_directory("initial_files")                                   # external routine
+        # basis for imported stock inventory 
+        dir_path = create_directory("initial_files")                                 
         id = 0
         self.dir_path = dir_path
-        stock_file = os.path.join(dir_path, "stock.csv")                               # external information file
+        stock_file = os.path.join(dir_path, "stock.csv")                               
         inventory_file = os.path.join(dir_path, "inventory.csv")
         expire_file = os.path.join(dir_path, "expires_dates.csv")
         purchase_file = os.path.join(dir_path, "purchase.csv")
@@ -42,7 +43,7 @@ class StockStart():
                     sold_date = row["sold_date"]
                     sold_price = float(row["sold_price"])
                     exit_satus = row["exit_status"]
-                    id = unique_id(amount_round, expiration_date, purchase_date)        # external rountine
+                    id = unique_id(amount_round, expiration_date, purchase_date)        
 
 # subfile inventory building
                     if os.path.isfile(inventory_file):
