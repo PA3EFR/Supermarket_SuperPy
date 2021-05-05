@@ -8,14 +8,13 @@ from os import system, name
 import os.path
 from os import path
 
-# _ = system('cls')  # clear screen
 directory_exists = path.exists('initial_files')  # check if this is first time run by dir_existance checking
 if directory_exists:
     print(" The initial start-up of the Super Market Py has been executed.")
 else:
     import init
 """"
-Action request through argparse. 
+Action requests through argparse. 
 """
 import argparse
 from sell2 import sell2
@@ -23,6 +22,7 @@ from datetime import date
 from expire import get_expiry_report_simulated
 
 def main(command_line=None):
+    # function to obtain the users command for further execution
     parser = argparse.ArgumentParser('Supermarket SuperPy')
     subparsers = parser.add_subparsers(dest='command')
 
