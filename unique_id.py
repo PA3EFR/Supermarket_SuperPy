@@ -1,10 +1,10 @@
 """"
-This function creates a change_id, based on four components of the item:
+This function creates an item_id, based on four components of the item:
     1. the date of the change to the stock database (basically today)
     2. the amount of the item
     3. the expiration date of the item.
     4. the purchase date
-This 'glued together' forms a unique change_id.
+This 'glued together' through a randomizer forms a unique item_id.
 """
 
 from datetime import date
