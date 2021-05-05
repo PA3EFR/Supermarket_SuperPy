@@ -15,7 +15,7 @@ if args["num"] == None:
     num_of_days = 0
 else:
     num_of_days = int(args["num"])
-
+    
 if args["date"] == None:
     sim_date = date.today()
 else:
