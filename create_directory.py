@@ -5,17 +5,15 @@ from csv import DictWriter
 import shutil
 
 """ 
-Target of this routine is to create a directory folder 'supermarket_files'
+Target of this routine is to create a directory folder 'initial_files'
 to facilitate the stock-files in a later process.
 """
 
-def create_directory(directory_name):                   # routine starts in StockStart with DirName InitialFiles
+def create_directory(directory_name):                   
+    # creates a directory with directory_name as input and directory as output
     full_path = os.path.realpath(__file__)
-    # print ("full path", full_path)
     file_directory = os.path.dirname(full_path)
-    # print ("file_directory", file_directory)
     directory_path = os.path.join(file_directory, directory_name)
-    # print("cd-",directory_path,"---")
 
     if not os.path.isdir(directory_path):
         os.makedirs(directory_path)
@@ -40,5 +38,5 @@ def create_directory(directory_name):                   # routine starts in Stoc
     return directory_path
 
 
-# create_directory("supermarket_files")         # testline
+# create_directory("supermarket_files")         # testline for debugging
 
