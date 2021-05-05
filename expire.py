@@ -5,25 +5,23 @@ import csv
 import math
 from datetime import date, timedelta, datetime
 
-
-
 full_path = os.path.realpath(__file__)
 file_directory = os.path.dirname(full_path)
 directory_path = os.path.join(file_directory, "initial_files")
 inventory_file = os.path.join(directory_path, "inventory.csv")
 expire_file = os.path.join(directory_path, "expires_dates.csv")
 
-
-def get_expiry_report_today(running_date, num_of_days):             # check current expire dates of inventory
+def get_expiry_report_today(running_date, num_of_days):             
+    # check current expire dates of present inventory
     report = []
-    number_of_days = num_of_days                                    # for today=0
+    number_of_days = num_of_days                                   
     headers = ["id", "product_name", "purchase_amount", "expiration_date", "exit_status"]
     report.append(headers)
     os.remove(os.path.join(os.path.join(os.path.dirname(os.path.realpath(__file__)), "initial_files"), "expires_dates.csv"))
 
     with fileinput.input(files=inventory_file, inplace=True, mode='r') as file:     # update inventory.cvs
         reader = csv.DictReader(file)
-        print(",".join(reader.fieldnames))  # print back the headers
+        print(",".join(reader.fieldnames))                                          # print back the headers
         for row in reader:
             expire_date = row["expiration_date"]
             product_expire_date = date.fromisoformat(expire_date)
@@ -38,16 +36,17 @@ def get_expiry_report_today(running_date, num_of_days):             # check curr
             else:
                 print(",".join([row["id"], row["product_name"], row["purchase_date"], row["purchase_amount"],row["purchase_price"], row["expiration_date"],row["cool_storage"], row["sold_date"], row["sold_price"], row["exit_status"]]))
 
-    file = open(expire_file, 'w+', newline="")     # update expires_dates.cvs
+    file = open(expire_file, 'w+', newline="")                                      # update expires_dates.cvs
     with file:
         write = csv.writer(file)
         write.writerows(report)
 
     return report
 
-# report = get_expiry_report_today("2021-04-11", 2)       # testline module
+# report = get_expiry_report_today("2021-04-11", 2)                                 # testline module
 
-def get_expiry_report_simulated(sim_date, num_of_days):             # check expire dates of inventory
+def get_expiry_report_simulated(sim_date, num_of_days):             
+    # check expire dates of inventory with simulated date and indicated period of days
     if sim_date == "None":
         sim_date = str(date.today())
     report = []
