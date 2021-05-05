@@ -20,7 +20,6 @@ expire_file = os.path.join(directory_path, "expires_dates.csv")
 purchase_file = os.path.join(directory_path, "purchase.csv")
 sales_file = os.path.join(directory_path, "sales.csv")
 
-
 with fileinput.input(files=inventory_file, inplace=False, mode='r') as file:
     reader =csv.DictReader(file)
     # print("\t,".join(reader.fieldnames))                # print back the headers
@@ -35,8 +34,6 @@ with fileinput.input(files=inventory_file, inplace=False, mode='r') as file:
                 expire_counter += 1
                 value_loss += float(row["purchase_price"])
 
-
-# _ = system('cls')                                         # clear screen
 print_tabel(inventory_file)  # external routine
 print("\n\n\tnumber of inventory items:",count)
 print("\n\ttotal purchase costs:\t\t", round((purchase_price),2))
@@ -44,4 +41,3 @@ print(f"\ttotal of {sold_counter} sales:\t\t", round((sales_price), 2))
 print("\tnumber of expired items today:\t", expire_counter)
 print("\tvalueloss due to expired items:\t", value_loss)
 print("\ttoday's profit on total stock:\t", (round((sales_price-purchase_price-value_loss),2)), "\n\n\n")
-
